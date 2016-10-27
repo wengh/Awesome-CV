@@ -40,6 +40,9 @@
   \PassOptionsToClass{\CurrentOption}{article}
 }
 \ProcessOptions\relax
+
+\def\@@ptsize{11pt}
+
 \LoadClass{article}
 
 
@@ -209,6 +212,40 @@
 ]{SourceSansPro}
 
 
+
+%-------------------------------------------------------------------------------
+%                fontsize
+%-------------------------------------------------------------------------------
+\newcommand*{\sizesection}[1]{\def\@sizesection{#1}}
+\ifthenelse{\isundefined{\@sizesection}}{\sizesection{16pt}}{}
+
+\newcommand*{\sizesubsection}[1]{\def\@sizesubsection{#1}}
+\ifthenelse{\isundefined{\@sizesubsection}}{\sizesubsection{12pt}}{}
+
+% entrys
+\newcommand*{\sizeentrytitle}[1]{\def\@sizeentrytitle{#1}}
+\ifthenelse{\isundefined{\@sizeentrytitle}}{\sizeentrytitle{10pt}}{}
+
+\newcommand*{\sizeentryposition}[1]{\def\@sizeentryposition{#1}}
+\ifthenelse{\isundefined{\@sizeentryposition}}{\sizeentryposition{8pt}}{}
+
+\newcommand*{\sizeentrydate}[1]{\def\@sizeentrydate{#1}}
+\ifthenelse{\isundefined{\@sizeentrydate}}{\sizeentrydate{8pt}}{}
+
+\newcommand*{\sizeentrylocation}[1]{\def\@sizeentrylocation{#1}}
+\ifthenelse{\isundefined{\@sizeentrylocation}}{\sizeentrylocation{9pt}}{}
+
+\newcommand*{\sizedescription}[1]{\def\@sizedescription{#1}}
+\ifthenelse{\isundefined{\@sizedescription}}{\sizedescription{9pt}}{}
+
+
+%-------------------------------------------------------------------------------
+%                line stretch
+%-------------------------------------------------------------------------------
+\newcommand*{\stretchdescription}[1]{\def\@stretchdescription{#1}}
+\ifthenelse{\isundefined{\@stretchdescription}}{\stretchdescription{1.2}}{}
+
+
 %-------------------------------------------------------------------------------
 %                Configuration for styles
 %-------------------------------------------------------------------------------
@@ -221,16 +258,16 @@
 \newcommand*{\headersocialstyle}[1]{{\fontsize{6.8pt}{1em}\headerfont\color{text} #1}}
 \newcommand*{\headerquotestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\itshape\color{darktext} #1}}
 \newcommand*{\footerstyle}[1]{{\fontsize{8pt}{1em}\footerfont\scshape\color{lighttext} #1}}
-\newcommand*{\sectionstyle}[1]{{\fontsize{16pt}{1em}\bodyfont\bfseries\color{text}\@sectioncolor #1}}
-\newcommand*{\subsectionstyle}[1]{{\fontsize{12pt}{1em}\bodyfont\scshape\textcolor{text}{#1}}}
+\newcommand*{\sectionstyle}[1]{{\fontsize{\@sizesection}{1em}\bodyfont\bfseries\color{text}\@sectioncolor #1}}
+\newcommand*{\subsectionstyle}[1]{{\fontsize{\@sizesubsection}{1em}\bodyfont\scshape\textcolor{text}{#1}}}
 \newcommand*{\paragraphstyle}{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text}}
 
 % For elements of entry
-\newcommand*{\entrytitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\entrypositionstyle}[1]{{\fontsize{8pt}{1em}\bodyfont\scshape\color{graytext} #1}}
-\newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
-\newcommand*{\entrylocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
-\newcommand*{\descriptionstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text} #1}}
+\newcommand*{\entrytitlestyle}[1]{{\fontsize{\@sizeentrytitle}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\newcommand*{\entrypositionstyle}[1]{{\fontsize{\@sizeentryposition}{1em}\bodyfont\scshape\color{graytext} #1}}
+\newcommand*{\entrydatestyle}[1]{{\fontsize{\@sizeentrydate}{1em}\bodyfontlight\slshape\color{graytext} #1}}
+\newcommand*{\entrylocationstyle}[1]{{\fontsize{\@sizeentrylocation}{1em}\bodyfontlight\slshape\color{awesome} #1}}
+\newcommand*{\descriptionstyle}[1]{{\setstretch{\@stretchdescription}\fontsize{\@sizedescription}{1em}\bodyfontlight\upshape\color{text} #1}}
 
 % For elements of subentry
 \newcommand*{\subentrytitlestyle}[1]{{\fontsize{8pt}{1em}\bodyfont\mdseries\color{graytext} #1}}
